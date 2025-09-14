@@ -161,3 +161,11 @@ This helps in reducing the risk of the possibility of your application going dow
   - **Resources**: are the list of actual resources that will be created or configured by the template
   - **Outputs**: values that the template returns after deployment completes, such as IP addresses or connection strings that you might need for other deployments or applications.  
 [The official Microsoft Azure GitHub repository](https://github.com/Azure/azure-quickstart-templates) contains sample ARM templates for almost every service in Azure.
+
+## Azure Bicep Files
+
+**What is Bicep?**  
+Bicep is a domain-specific language (DSL) that simplifies writing Azure Resource Manager templates by using a cleaner, more readable syntax instead of complex JSON. It compiles down to standard ARM templates but is much easier to write and maintain, making Infrastructure as Code more accessible for Azure deployments.  
+
+Bicep has an extension in VSCode found [here.](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)  This allows you to edit bicep files with intellisense and other useful features in VSCode.  
+
