@@ -169,3 +169,30 @@ Bicep is a domain-specific language (DSL) that simplifies writing Azure Resource
 
 Bicep has an extension in VSCode found [here.](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)  This allows you to edit bicep files with intellisense and other useful features in VSCode.  
 
+## Azure App Services
+
+**Azure App Service**: is a Platform-as-a-Service (PaaS) offering that lets you deploy and host web applications, APIs, and mobile backends without managing the underlying servers or infrastructure. You just upload your code (in languages like .NET, Java, Python, Node.js, PHP) and Azure handles the scaling, patching, and maintenance automatically.
+
+**Zone Redundancy**: an App Service can be deployed as a zone redundant service in the regions that support it.  This is a deployment time only decision.  *You cannot make an App Service plan zone redundant after it has been deployed.*  You must have a premium pricing plan selected in order to be able to utilize zone redundancy.  
+
+### Deployment
+
+**Continuous Deployment**: can be setup to easily deploy code from your GitHub repository via GitHub Actions.
+
+**GitHub Settings**: can be setup to push content to your app whenever there are code changes made to your repository. This is a type of CI/CD in Azure.
+Other options for CI/CD are:
+- Bitbucket
+- Local Git
+- Azure Repos
+
+### Web App Settings
+
+**Application Settings**: allow you to separate out the dynamic variables of an application from the code.  You don't want important settings buried in the code.  Found in the **Environment variables** blade.  
+
+### Scaling
+
+Just like VMSS you have the ability to scale up/down, and in/out.
+
+For in/out scaling you also have the option to either scale automatically or manually.  
+You can turn *Session Affinity* on to ensure an end user always gets the same web app server.  
+
