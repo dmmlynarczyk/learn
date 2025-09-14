@@ -210,3 +210,33 @@ Stop-AzVM -ResourceGroupName 'az104-rg8' -Name 'myPSVM'
 ``` bash
 az vm deallocate --resource-group az104-rg8 --name myCLIVM
 ```
+
+### Deploy Template To A Resource Group
+
+**PowerShell**
+``` powershell
+New-AzResourceGroupDeployment -ResourceGroupName resourceGroupName -TemplateFile template.json -TemplateParameterFile parameters.json
+```
+
+**Bash**
+``` bash
+az deployment group create --resource-group resourceGroupName --template-file template.json --parameters parameters.json
+```
+
+### To List Disks
+
+**PowerShell**
+``` powershell
+Get-AzDisk
+```
+
+**Bash**
+``` bash
+az disk list --output table
+```
+
+### Deploy A Resource By Using Azure Bicep
+
+``` bash
+az deployment group create --resource-group resourceGroupName --template-file azuredeployfile.bicep
+```

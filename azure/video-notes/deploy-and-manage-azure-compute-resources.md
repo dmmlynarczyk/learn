@@ -159,4 +159,5 @@ This helps in reducing the risk of the possibility of your application going dow
   - **Variables**: variables that are NOT passed into the template (like a parameter) but are instead created and used inside of the template
     - Internal values calculated or defined within the template to simplify expressions and avoid repetition throughout the template.
   - **Resources**: are the list of actual resources that will be created or configured by the template
-  - **Outputs**: values that the template returns after deployment completes, such as IP addresses or connection strings that you might need for other deployments or applications.
+  - **Outputs**: values that the template returns after deployment completes, such as IP addresses or connection strings that you might need for other deployments or applications.  
+[The official Microsoft Azure GitHub repository](https://github.com/Azure/azure-quickstart-templates) contains sample ARM templates for almost every service in Azure.
