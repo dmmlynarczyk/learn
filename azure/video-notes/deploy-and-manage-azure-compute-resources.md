@@ -196,3 +196,23 @@ Just like VMSS you have the ability to scale up/down, and in/out.
 For in/out scaling you also have the option to either scale automatically or manually.  
 You can turn *Session Affinity* on to ensure an end user always gets the same web app server.  
 
+## Containers
+
+**Container**: is a lightweight, portable package that includes an application and everything it needs to run (code, runtime, libraries, settings, etc).
+- Think of it as a standardized shipping container that can run consistently anywhere, whether on your laptop, Azure, or any other cloud platform.
+- Azure Container Instances and Azure Container Apps are services that run these containers without you needing to manage the underlying servers.
+- Kubernetes is the industry standard for containers, but not a requirement in AZ104.
+- **Azure Container Groups**: a collection of containers running in the same host.
+- **Azure Container Registry**: a private container that lives in Azure that you can store your private container images.
+
+### Azure Container Instances
+
+- **Azure Container Instances**: used to create and manage Docker containers in Azure without having to set up virtual machines or manage additional infrastructure.
+  - Single node instances instead of clusters like in Kubernetes.
+
+### Azure Container Apps
+
+- **Azure Container Apps**: provide the flexibility of web apps and the simplicity of Kubernetes.
+  - It automatically handles scaling, load balancing, and networking.
+  - Ideal for microservices, APIs, and event-driven applications that need to scale up and down based on demand.
+  - Serverless containers!
