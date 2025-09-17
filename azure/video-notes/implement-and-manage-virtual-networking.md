@@ -41,4 +41,4 @@ Basic tier of public IP addresses has been deprecated in Azure, now only have th
   - This option allows the remote virtual network address space to be included as part of the Virtual_Network tag.
 - **Traffic forwarded from remote virtual network**: this setting allows forwarded traffic from remote virtual network (traffic not originating from inside remote virtual network) into NewTest1. 
   - This allows a hub and spoke topology to actually forward non-peered network together.
-- If you know the Resource ID of two different resources in different subscriptions.
+- If you know the Resource ID of two different resources in different subscriptions you can peer them together also!
