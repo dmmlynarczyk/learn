@@ -51,7 +51,7 @@ Verb is the first part of the word but the last bit is the consistent service na
 - **To download the latest version of PowerShell**:
   - Download for your operating system from [Github](https://github.com/PowerShell/PowerShell/releases)
 
-## EntraID Management
+## Entra ID Management
 
 ### Creating A New User
 

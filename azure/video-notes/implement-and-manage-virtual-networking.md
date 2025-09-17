@@ -29,3 +29,16 @@ Basic tier of public IP addresses has been deprecated in Azure, now only have th
   - **Disabled**: no protection needed/wanted
 
 - To associate your new public IP address with a device you need to select the 'Associate' link on the public IP.  Or you can go to the network interface card on your device, and associate the public IP in there.  
+
+## VNET Peering
+
+- By default any server running on a virtual network will not be able to communicate with a server on a different virtual network.  They will be able to talk to servers on the same virtual network though.
+- **Peering**: is the idea of setting up a relationship on two different virtual networks that they recognize each other.  Allowing virtual machines running on one vnet will be able to communicate with virtual machines on another vnet.
+   > [!IMPORTANT]
+   > The IPs defined in one virtual network have to be non-overlapping.
+- Vnets can have peerings with multiple other vnets.  Think hub and spoke topology.
+- **Traffic to remote virtual network**: this will need to be allowed if you wish to allow communication between the two virtual networks.
+  - This option allows the remote virtual network address space to be included as part of the Virtual_Network tag.
+- **Traffic forwarded from remote virtual network**: this setting allows forwarded traffic from remote virtual network (traffic not originating from inside remote virtual network) into NewTest1. 
+  - This allows a hub and spoke topology to actually forward non-peered network together.
+- If you know the Resource ID of two different resources in different subscriptions.
