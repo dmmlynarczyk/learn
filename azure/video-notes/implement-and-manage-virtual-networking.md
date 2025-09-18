@@ -59,3 +59,17 @@ Basic tier of public IP addresses has been deprecated in Azure, now only have th
   - It terminates the encrypted traffic, performs routing between the Azure vnet and the external network, and supports site-to-site, point-to-site, and vnet-to-vnet connectivity.
   - The gateway is provisioned as a specific SKU that determines throughput, supported features, and pricing.
   - Gateway Subnet is a second subnet that the network gateway is deployed in.
+
+## Azure DNS
+
+**Domain Name System (DNS)**: The way a human rememberable domain name is turned into an IP address.  
+*For example*: microsoft.com -- resolves to  -> 40.112.72.205  
+Three DNS options:
+1. **You provide DNS (hosted elsewhere)**: the custom domain is resolved to an IP address before the traffic reaches Azure
+2. **Azure Private DNS**: Not accessible for outside of Azure
+   1. You do not need to register if with any registry
+   2. Doesn't affect anything outside your own network
+   3. **Enable Auto Registration**: enables automatic creation of DNS records in this private DNS zone, for the virtual machines connected to the virtual network.
+3. **Azure Public DNS**: works like your registrar would
+4. **Azure Domain Services**: register a domain to use for a Web App
+
