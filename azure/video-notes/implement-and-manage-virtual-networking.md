@@ -34,11 +34,28 @@ Basic tier of public IP addresses has been deprecated in Azure, now only have th
 
 - By default any server running on a virtual network will not be able to communicate with a server on a different virtual network.  They will be able to talk to servers on the same virtual network though.
 - **Peering**: is the idea of setting up a relationship on two different virtual networks that they recognize each other.  Allowing virtual machines running on one vnet will be able to communicate with virtual machines on another vnet.
-   > [!IMPORTANT]
-   > The IPs defined in one virtual network have to be non-overlapping.
+> [!IMPORTANT]
+> The IPs defined in one virtual network have to be non-overlapping.
+
 - Vnets can have peerings with multiple other vnets.  Think hub and spoke topology.
 - **Traffic to remote virtual network**: this will need to be allowed if you wish to allow communication between the two virtual networks.
   - This option allows the remote virtual network address space to be included as part of the Virtual_Network tag.
 - **Traffic forwarded from remote virtual network**: this setting allows forwarded traffic from remote virtual network (traffic not originating from inside remote virtual network) into NewTest1. 
   - This allows a hub and spoke topology to actually forward non-peered network together.
 - If you know the Resource ID of two different resources in different subscriptions you can peer them together also!
+
+### Global Peering
+
+> [!NOTE]
+> Both ingress and egress traffic is charged at both ends of the peered networks.
+
+- **Global Peering**: connects two Azure virtual networks that reside in **different Azure regions** (or subscriptions) so they can communicate privately over Microsoft's backbone network.  
+  - Once peered, resources in either vnet can reach each other using their private IP addresses, just as if they were in the same region, while traffic never traverses the public internet.
+  - The peering is non-transitive, requires explicit configuration on both sides, and incurs a modest inter-region data-transfer cost.
+
+### Virtual Network Gateway
+
+- **Virtual Network Gateway**: is a dedicated Azure resource that provides a secure tunnel endpoint for connecting an Azure Virtual Network to on-premise networks, other vnets, or remote clients via VPN or ExpressRoute.
+  - It terminates the encrypted traffic, performs routing between the Azure vnet and the external network, and supports site-to-site, point-to-site, and vnet-to-vnet connectivity.
+  - The gateway is provisioned as a specific SKU that determines throughput, supported features, and pricing.
+  - Gateway Subnet is a second subnet that the network gateway is deployed in.
