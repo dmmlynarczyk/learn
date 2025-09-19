@@ -73,3 +73,15 @@ Three DNS options:
 3. **Azure Public DNS**: works like your registrar would
 4. **Azure Domain Services**: register a domain to use for a Web App
 
+## Secure Access to Virtual Networks
+
+## Security Groups
+
+- **Network Security Group (NSG)**: a core way to control network access in Azure. They act like a firewall using allow or deny rules, using things like IP address, port, and protocol.
+  - Can be associated with either subnet or NIC
+  - Rule based on priority, lower priority comes first
+- **Application Security Groups (ASG)**: a logical grouping of resources that can be a destination.
+  - Allows you to define network security rules based on application workloads rather than specific IP addresses.
+  - Instead of creating security rules for individual VM IP addresses, you assign VMs to ASGs and then create Network Security Group rules that reference these groups.
+  - *Key Benefit*: Makes security rules more manageable and scalable as your infrastructure grows.
+
