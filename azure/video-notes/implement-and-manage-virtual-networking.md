@@ -73,8 +73,6 @@ Three DNS options:
 3. **Azure Public DNS**: works like your registrar would
 4. **Azure Domain Services**: register a domain to use for a Web App
 
-## Secure Access to Virtual Networks
-
 ## Security Groups
 
 - **Network Security Group (NSG)**: a core way to control network access in Azure. They act like a firewall using allow or deny rules, using things like IP address, port, and protocol.
@@ -85,3 +83,19 @@ Three DNS options:
   - Instead of creating security rules for individual VM IP addresses, you assign VMs to ASGs and then create Network Security Group rules that reference these groups.
   - *Key Benefit*: Makes security rules more manageable and scalable as your infrastructure grows.
 
+## Load Balancers
+
+- **Load Balancer**: device that (usually evenly) distributes traffic that comes in to multiple servers behind it.
+  - Use it because while a single VM can suffice for non-critical workloads but there are downsides to using just a single server like:
+    - Occasionally, you have to reboot the server for updates
+    - Risk of a single rack, or data center, going offline
+    - Risk of a lot of traffic all at once (*burst*)
+- Two types of load balancers:
+  - **Public Load Balancer**: accepts internet traffic and distributes it to backend VMs with public-facing IP
+    - Used for web apps, APIs, and public-facing services
+  - **Internal Load Balancer**: Accepts traffic within a VNet
+    - Used for internal services, such as databases or internal apps
+- A standard load balancer supports:
+  - **Zonal**: in one zone
+  - **Zone-redundant**: across zones
+- 
