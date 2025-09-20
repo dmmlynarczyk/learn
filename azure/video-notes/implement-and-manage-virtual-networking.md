@@ -98,4 +98,12 @@ Three DNS options:
 - A standard load balancer supports:
   - **Zonal**: in one zone
   - **Zone-redundant**: across zones
-- 
+
+## Network Watcher
+
+- **Network Watcher**: is Azure's network monitoring and diagnostic service that helps troubleshoot connectivity issues and monitor network performance.  It is primarily used to diagnose why network connections aren't working and validate that your network security configurations are functioning as exposed.  It provides tools like: 
+    - **Connection Monitor**: allows for tracking network connectivity over time
+    - **IP Flow Verify**: to check if traffic is allowed or denied by security rules
+    - **Next Hop**: to trace network routing paths
+    - **NSG Flow Logs**: allows you to view information about traffic flowing through an NSG
+    - **Next Hop**: allows you to trace the next hop for a given network destination.  This is useful for diagnosing issues with User Defined Routes (static routes)
