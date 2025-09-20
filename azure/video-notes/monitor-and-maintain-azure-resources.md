@@ -37,13 +37,12 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
 
 ### Standard vs Enhanced Backup
 
-| **Standard**                | **Enhanced**                   |
-|:---------------------------:|:------------------------------:|
-|   Once a day backup         |   Multiple backups per day     |
-|   1-5 days operational tier |   1-30 days operational tier   |
-|   Vault tier                |   Vault tier                   |
-|---------------------------- |   ZRS resilient snapshot tier  |
-|---------------------------- |   Support for Trusted Azure VM |
+| **Standard**                    | **Enhanced**                                           |
+|:-------------------------------:|:------------------------------------------------------:|
+|   Once a day backup             |   Multiple backups per day                             |
+|   Up to 5 days operational tier |   Up to 30 days operational tier                       |
+|----------------------------     |   Support for VMs with Ultra Disks and Premium SSD v2  |
+|----------------------------     |   Support for Trusted Launch Azure VM                  |
 
 ### Azure Site Recovery
 
