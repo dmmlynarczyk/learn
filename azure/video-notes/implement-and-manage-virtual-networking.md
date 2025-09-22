@@ -2,6 +2,19 @@
 
 15%-20% of AZ-104 exam.  
 
+- [Implement and Manage Virtual Networking](#implement-and-manage-virtual-networking)
+  - [Virtual Networks](#virtual-networks)
+    - [Security Settings](#security-settings)
+    - [Public IP Address](#public-ip-address)
+  - [VNET Peering](#vnet-peering)
+    - [Global Peering](#global-peering)
+    - [Virtual Network Gateway](#virtual-network-gateway)
+  - [Azure DNS](#azure-dns)
+  - [Security Groups](#security-groups)
+  - [Load Balancers](#load-balancers)
+  - [Network Watcher](#network-watcher)
+
+
 ## Virtual Networks
 
 **Virtual Networks**: are your private network space in the cloud that logically isolates your Azure resources from other customers.  They work like a traditional network in your office - you can control IP addresses, create and modify subnets, set up security rules, and connect to other network or the internet, giving you secure communication between your Azure resources.  

@@ -2,6 +2,26 @@
 
 **20%-25% of AZ-104 exam.**  
 
+- [Manage Azure Identities and Governance](#manage-azure-identities-and-governance)
+  - [Entra ID Basics](#entra-id-basics)
+  - [License Tiers](#license-tiers)
+  - [Domains](#domains)
+  - [Groups](#groups)
+  - [Licenses](#licenses)
+  - [Administrative Units](#administrative-units)
+  - [Devices](#devices)
+  - [Self-Service Password Reset](#self-service-password-reset)
+  - [Role Based Access Control (RBAC)](#role-based-access-control-rbac)
+    - [Benefits of RBAC](#benefits-of-rbac)
+    - [Role Types](#role-types)
+    - [Interpret Access Assignments](#interpret-access-assignments)
+  - [Accounts, Subscriptions, and Governance](#accounts-subscriptions-and-governance)
+    - [Cost Management - Analysis, Alerts, Budget, and Advisor](#cost-management---analysis-alerts-budget-and-advisor)
+    - [Resource Locks](#resource-locks)
+    - [Azure Policies](#azure-policies)
+    - [Tags](#tags)
+
+
 ## Entra ID Basics
 
 > [!NOTE]

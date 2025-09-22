@@ -2,6 +2,15 @@
 
 10%-15% of AZ-104 exam.  
 
+- [Monitor and Maintain Azure Resources](#monitor-and-maintain-azure-resources)
+  - [Monitor Resources In Azure](#monitor-resources-in-azure)
+    - [Insights](#insights)
+    - [Detection, Triage, and Diagnostics](#detection-triage-and-diagnostics)
+  - [Implement Backup and Recovery](#implement-backup-and-recovery)
+    - [Standard vs Enhanced Backup](#standard-vs-enhanced-backup)
+    - [Azure Site Recovery](#azure-site-recovery)
+
+
 ## Monitor Resources In Azure
 
 In the sidebar and in the resources it is simply called **Monitor**.  

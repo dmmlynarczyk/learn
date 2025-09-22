@@ -5,6 +5,10 @@
 - [Scott Duffy AZ-104](https://gale.udemy.com/course/70533-azure/learn/lecture/36809328#overview)
 - [John Savill Study Cram v2](https://www.youtube.com/watch?v=0Knf9nub4-k)
 
+## Resource Material
+
+- [Tutorials Dojo Exam Study Guide](https://tutorialsdojo.com/az-104-microsoft-azure-administrator-exam-study-guide/) - Especially the **Azure Services to Focus On* section
+
 ## Labs
 
 - [Microsoft Learn GitHub Labs](https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/)  

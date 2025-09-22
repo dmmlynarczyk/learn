@@ -2,6 +2,32 @@
 
 20%-25% of AZ-104 exam.  
 
+- [Deploy and Manage Azure Compute Resources](#deploy-and-manage-azure-compute-resources)
+  - [Creating A Virtual Machine](#creating-a-virtual-machine)
+    - [Availability Options](#availability-options)
+    - [Security Types](#security-types)
+    - [Spot Instances](#spot-instances)
+    - [Sizes](#sizes)
+    - [Hibernation](#hibernation)
+    - [Disks](#disks)
+    - [Networking](#networking)
+    - [Management and Advanced Options](#management-and-advanced-options)
+  - [Resizing VMs](#resizing-vms)
+  - [Adding Additional Data Disks](#adding-additional-data-disks)
+  - [Azure Bastion Service](#azure-bastion-service)
+  - [Virtual Machine Scale Sets](#virtual-machine-scale-sets)
+    - [Virtual Machine Scaling](#virtual-machine-scaling)
+  - [Automate Deployment of Resources By Using Templates](#automate-deployment-of-resources-by-using-templates)
+  - [Azure Bicep Files](#azure-bicep-files)
+  - [Azure App Services](#azure-app-services)
+    - [Deployment](#deployment)
+    - [Web App Settings](#web-app-settings)
+    - [Scaling](#scaling)
+  - [Containers](#containers)
+    - [Azure Container Instances](#azure-container-instances)
+    - [Azure Container Apps](#azure-container-apps)
+
+
 ## Creating A Virtual Machine
 
 ### Availability Options
@@ -11,8 +37,9 @@ There are four availability options you can choose from when creating your machi
   - Great if it is a stand-alone VM since data is not being passed between VMs.
 - **Availability zone**: Physically separate your resources within an Azure region.
 - **Virtual machine scale set**: Distribute VMs across zones and fault domains at scale.
-- **Availability set**: Automatically distribute your VMs across multiple fault domains.
-  - The purpose is to protect against hardware failures in any given data center.
+- **Availability set**: a logical grouping of VMs within a data center that ensures they are distributed across multiple fault domains (power/network) and update domains (separate maintenance windows) to maximize uptime.
+  - The purpose if to protect against hardware failures and planned maintenance outages by ensuring that all of your VMs *DO NOT* go down at the same time.
+  - 99.95% SLA when you have two or more VMs in the set.
   - Two failures are:
     - **Fault domains**: something relating to the computer failed.
       - Virtual machines in the same fault domain share a common power source and physical network switch.
@@ -100,6 +127,7 @@ From your VM page, on the blade select Size under the "Availability + scale" sec
 ## Adding Additional Data Disks
 
 - More often than not, we will need to store data on the virtual machines, but since data should not be stored on the C: drive, and the D: drive is ephemeral we will need to add data disks. *This is the recommended way.*
+  - Data on the D: drive is ephemeral means that data stored on that drive is temporary and will be lost if the VM is stopped/deallocated, resized, or moved to different physical hardware. So *never store important data there that you cannot afford to lose.*
 - First we will need to shutdown our VM.
 - Under blade category "Settings" > "Disks"
   - Here you can create a new data disk to add.

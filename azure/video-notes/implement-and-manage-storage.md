@@ -2,6 +2,23 @@
 
 15%-20% of AZ-104 exam.  
 
+- [Implement and Manage Storage](#implement-and-manage-storage)
+  - [Create Storage Accounts](#create-storage-accounts)
+    - [Redundant Storage](#redundant-storage)
+    - [Advanced Options](#advanced-options)
+    - [Blob Storage Access tiers](#blob-storage-access-tiers)
+    - [Networking](#networking)
+    - [Data Protection](#data-protection)
+  - [Encryption](#encryption)
+  - [Containers](#containers)
+  - [Access Keys and Shared Access Signature(SAS)](#access-keys-and-shared-access-signaturesas)
+  - [Stored Access Policies](#stored-access-policies)
+  - [Entra ID Access Control](#entra-id-access-control)
+  - [Lifecycle Management](#lifecycle-management)
+  - [Object Replication](#object-replication)
+  - [Storage Browser](#storage-browser)
+  - [File Shares](#file-shares)
+
 ## Create Storage Accounts
 
 When creating a storage account it is important to remember that the region that you choose will directly affect the amount you pay.  But you want the data to live close to you for accessing.  Region can also be chosen based on the jurisdiction of the data you are storing.  For example, health data for U.S. patients, need to be stored in the U.S.  
