@@ -12,6 +12,7 @@
     - [Disks](#disks)
     - [Networking](#networking)
     - [Management and Advanced Options](#management-and-advanced-options)
+  - [Azure Backup](#azure-backup)
   - [Resizing VMs](#resizing-vms)
   - [Adding Additional Data Disks](#adding-additional-data-disks)
   - [Azure Bastion Service](#azure-bastion-service)
@@ -29,6 +30,8 @@
 
 
 ## Creating A Virtual Machine
+
+An Azure Virtual Machine (VM) is on of several types of on-demand, scalable compute resources that Azure offers.  It gives you the flexibility of virtualization without having to buy and maintain physical hardware.  However you will still need to perform basic maintenance tasks such as configuring, patching, and installing software on the VMs.
 
 ### Availability Options
 
@@ -79,8 +82,6 @@ These are great for low-priority workloads.
 - **High-Performance Compute**: fastest everything.
   - Fastest and most powerful CPU virtual machines with optional high-throughput network interfaces (RDMA).
 
-
-
 ### Hibernation
 
 **Hibernation**: saves you time and money by deallocating your virtual machine and saving the contents of its RAM to the root volume.  
@@ -117,6 +118,15 @@ Similar to OS disk you have the option of deleting the public IP and NIC when th
 - **Extensions**: allows you to add new features, like configuration management or antivirus protection, to your virtual machine using extensions.  
 - **Azure Dedicated Hosts**: allows you to provision and manage a physical server within our data centers that are dedicated to your Azure subscription.  
   - Gives you assurance that only VMs from your subscription are on the host. 
+
+## Azure Backup
+
+- **Azure Backup**: protects your VMs and their data through the Recovery Services vaults that store backup copies with configurable retention policies.
+  - **Backups must be in the same region as the VM**
+  - You can restore entire VMs or individual files
+  - Provides automated scheduling with point-in-time recovery to meet your RPO/RTO requirements.
+  - Essential for ensuring computer workloads have proper data protections and can be quickly restored after failures or disasters. 
+  - Azure Backup only takes snapshots of the VM disks, meaning that **even if the VM status is running or stopped, you can still create a backup** as long as the disk is attached to the VM.
 
 ## Resizing VMs
 
