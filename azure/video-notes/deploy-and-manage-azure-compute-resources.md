@@ -39,6 +39,7 @@ There are four availability options you can choose from when creating your machi
 - **No infrastructure redundancy required**: self explanatory.
   - Great if it is a stand-alone VM since data is not being passed between VMs.
 - **Availability zone**: Physically separate your resources within an Azure region.
+  - Used to protect applications against Azure data center failures.
 - **Virtual machine scale set**: Distribute VMs across zones and fault domains at scale.
 - **Availability set**: a logical grouping of VMs within a data center that ensures they are distributed across multiple fault domains (power/network) and update domains (separate maintenance windows) to maximize uptime.
   - The purpose if to protect against hardware failures and planned maintenance outages by ensuring that all of your VMs *DO NOT* go down at the same time.
@@ -162,9 +163,11 @@ This helps in reducing the risk of the possibility of your application going dow
 - Redundancy
 - Load balancing
 
-**Orchestration modes**: determines how VMs are handled by the scale set.  There are two options:  
-- **Flexible**: achieve high availability at scale with identical or multiple virtual machine types.  More complicated and can handle stateful instances.  
-- **Uniform**: optimized for large scale stateless workloads. You cannot manage any single machine as it is all the exact same.
+- **Orchestration modes**: determines how VMs are handled by the scale set.  
+  - Orchestration mode is defined when you create the scale set and cannot be changed or updated later.
+  - There are two options:  
+    - **Flexible**: achieve high availability at scale with identical or multiple virtual machine types.  More complicated and can handle stateful instances.  
+    - **Uniform**: optimized for large scale stateless workloads. You cannot manage any single machine as it is all the exact same.
 
 **Overprovisioning**: When turned on the scale set will spin up more VMs than you asked for, and will delete the extra VMs once the requested number of VMs are successfully provisioned.  It improves success rates and reduces deployment times. *You are not billed for the extra VMs and they do not count toward your quota limits.*
 
@@ -210,6 +213,13 @@ Bicep has an extension in VSCode found [here.](https://marketplace.visualstudio.
 ## Azure App Services
 
 **Azure App Service**: is a Platform-as-a-Service (PaaS) offering that lets you deploy and host web applications, APIs, and mobile backends without managing the underlying servers or infrastructure. You just upload your code (in languages like .NET, Java, Python, Node.js, PHP) and Azure handles the scaling, patching, and maintenance automatically.
+- Some runtime stacks will only work on Windows such as ASP.NET, while Ruby will only work with Linux.  Common runtime stacks include:
+  - ASP.NET V4.8 = **Windows**
+  - Node 16 LTS = **Windows & Linux**
+  - PHP 8.2 = **Linux**
+  - Python 3.10 = **Linux**
+  - Java 11 = **Windows & Linux**
+- Depending on your App Service Plan you may not be able to add a staging slot for your application.  If this happens you can upgrade your App Service plan to a Standard or Premium tier.
 
 **Zone Redundancy**: an App Service can be deployed as a zone redundant service in the regions that support it.  This is a deployment time only decision.  *You cannot make an App Service plan zone redundant after it has been deployed.*  You must have a premium pricing plan selected in order to be able to utilize zone redundancy.  
 

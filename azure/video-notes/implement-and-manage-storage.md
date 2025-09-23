@@ -10,6 +10,7 @@
     - [Networking](#networking)
     - [Data Protection](#data-protection)
   - [Encryption](#encryption)
+    - [Azure Key Vault](#azure-key-vault)
   - [Containers](#containers)
   - [Access Keys and Shared Access Signature(SAS)](#access-keys-and-shared-access-signaturesas)
   - [Stored Access Policies](#stored-access-policies)
@@ -81,6 +82,16 @@ There are three ways you can connect to your storage account:
 There are two encryption types in Azure:
 - **Microsoft-managed keys**: where Microsoft takes care of everything, and everything is stored on the hard drives encrypted. (*Default*)
 - **Customer-managed keys**: you create and manage the keys and provided the keys to a key vault that you reference.
+
+### Azure Key Vault
+
+**Azure Key Vault**: is a cloud service for securely storing and accessing secrets.
+- A *secret* is anything that you want to tightly control access to, such as API keys, passwords, certificates, or cryptographic keys.
+- Key Vault service supports two types of containers:
+  - **Vaults**: support storing software and HSM-backed keys, secrets, and certificates.
+  - **Managed-HSM pools**: only support HSM-backed keys.
+You can use an ARM template to retrieve a secure password in a key vault.  Instead of putting a secure value (like a password) directly in your template or parameter file, you can retrieve the value from an Azure Key Vault during deployment.  You retrieve the value by referencing the key vault and secret in your parameter file.  
+The value is never exposed because you only reference its key vault ID.
 
 ## Containers
 
