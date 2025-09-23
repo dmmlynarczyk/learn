@@ -20,6 +20,7 @@
     - [Resource Locks](#resource-locks)
     - [Azure Policies](#azure-policies)
     - [Tags](#tags)
+    - [Azure Advisor](#azure-advisor)
 
 
 ## Entra ID Basics
@@ -136,6 +137,13 @@ The other way is be selecting the user in Entra ID and selecting either "Azure r
   - Think of it like a folder structure
   - **All resources must belong to only one resource group**
   - When you delete a resource group, it will also delete all resources inside
+  - To verify the date and time the resources were deployed, you can select the resource group and click the deployment settings. You will see a summary of the deployment including: 
+    - deployment name
+    - status
+    - last modified
+    - duration
+    - related events
+  - If you select the specific template, you can check the inputs, outputs, and the template used during deployment.
 
 ### Cost Management - Analysis, Alerts, Budget, and Advisor
 
@@ -165,3 +173,8 @@ Tags allow you to define a name/value pair that can be attached to resources.
 Important to keep it consistent in your organization to ensure things are easy to find/determine. 
 You could set policies to require tags for all different types of things in Azure.  Subscriptions, resource groups, resources, etc.  
 
+### Azure Advisor
+
+**Azure Advisor**: is your go-to personalized cloud consultant, dedicated to helping you optimize your Azure deployments for maximum efficiency.  By thoroughly analyzing your resource configurations and monitoring usage data, Azure Advisor delivers tailored recommendations that enhance various aspects of your cloud environment.  
+
+These suggestions focus on improving *cost-effectiveness, boosting performance, ensuring reliability,* and *fortifying security,* allowing you to maximize the value of your Azure resources while minimizing potential risks.  
