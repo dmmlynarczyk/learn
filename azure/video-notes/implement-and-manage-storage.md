@@ -3,6 +3,7 @@
 15%-20% of AZ-104 exam.  
 
 - [Implement and Manage Storage](#implement-and-manage-storage)
+  - [Storage Types](#storage-types)
   - [Create Storage Accounts](#create-storage-accounts)
     - [Redundant Storage](#redundant-storage)
     - [Advanced Options](#advanced-options)
@@ -19,6 +20,20 @@
   - [Object Replication](#object-replication)
   - [Storage Browser](#storage-browser)
   - [File Shares](#file-shares)
+
+## Storage Types
+
+- There are four storage types in Azure and they are:
+  - **Blob Storage**: object storage for unstructured data like images, videos, documents, and backups.
+    - Think of it as a file storage accessible via REST API, great for websites and applications.
+  - **Files**: fully managed file shared accessible via SMB protocol that can be mounted like traditional network drives on Linux/Windows
+    - Enables you to set up highly available network file shares that can be accessed anywhere in the world.
+    - Perfect for lift-and-shift scenarios or shared application data.
+  - **Tables**: NoSQL key-value store for structured data that doesn't require complex relationships
+    - Ideal for storing large amounts of structured data like user profiles or device information
+  - **Queues**: message queuing service that enables asynchronous communication between application components
+    - Used for decoupling services and handling background processing tasks
+- **AzCopy**: is a command line utility that you can use to copy **blobs** or **files** to or from a storage account.
 
 ## Create Storage Accounts
 
