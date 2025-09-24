@@ -108,9 +108,23 @@ Three DNS options:
     - Used for web apps, APIs, and public-facing services
   - **Internal Load Balancer**: Accepts traffic within a VNet
     - Used for internal services, such as databases or internal apps
+- **Azure Application Gateway**: is a web traffic load balancer that enables you to manage traffic to your web applications.  For example, you can route traffic based on the incoming URL.
+  - So if /images are in the incoming URL, you can route traffic to a specific set of servers (known as a pool) configured for images.
+  - If /videos is in the URL instead, you can route that traffic to another pool that's optimized for videos.
+  - Also acts as a **Web Application Firewall** protecting web applications from common vulnerabilities and exploits, including:
+    - SQL injections
+    - Cross-site scripting attacks
+    - Other common attacks, such as command injection, HTTP request smuggling, HTTP response splitting, and remote file inclusion
+    - HTTP protocol violations
+    - HTTP protocol anomalies, such as missing host user-agent and accept headers
+    - Bots, crawlers, and scanners
+    - Common application misconfigurations
 - A standard load balancer supports:
   - **Zonal**: in one zone
   - **Zone-redundant**: across zones
+- **Session Persistence**: also known as **session affinity** or **client IP affinity**.  Connections from the same client will go to the same backend instance within the backend pool.  Session persistence has two configuration types:
+  - **Client IP (2-tuple)**: specifies that successive requests from the same client IP address will be handled by the same backend instance.
+  - **Client IP and protocol (3-tuple)**: specifies that successive requests from the same client IP address and protocol combination will be handled bu the same backend instance.
 
 ## Network Watcher
 
