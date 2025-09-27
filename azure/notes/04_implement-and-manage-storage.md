@@ -69,11 +69,13 @@ The default version are set, because they are typically the best options, and sh
 
 ### Blob Storage Access tiers
 
-**Access Tier**: is the default tier that is inferred by any blob *without an explicitly set tier*
-- **Hot**: Optimized for frequently accessed data and everyday usage scenarios (*Default*)
-- **Cool**: Optimized for infrequently accessed data and backup scenarios
-- **Cold**: Optimized for rarely accessed data and backup scenarios
+**Access Tiers**: determines the cost and performance characteristics of your blob data based on how frequently you access it.  *The three data tiers are supported in General Purpose V2 and Blob storage accounts.*
+- **Hot**: Optimized for frequently accessed data and everyday usage scenarios (*Default*). 
+  - Data storage costs are higher but data access costs are lower.
+- **Cool**: Optimized for infrequently accessed data and backup scenarios.
+  - Stored for a minimum of 30 days.
 - **Archived**: Can only be set at the blob level and not on the account.  VERY SLOW to get your data otherwise VERY EXPENSIVE for priority retrieval.
+  - Stored for a minimum of 180 days.
 
 
 ### Networking

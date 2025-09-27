@@ -29,7 +29,7 @@ Monitor contains insight metrics for 18 different services, but some of the more
 - **Storage Account Insights**: Performance, capacity, and availability of storage accounts
 - **Connection Monitor**: provides unified, end-to-end connection monitoring in Azure Network Watcher.  can be used to compare latencies of on-premises site to the latencies of an Azure application.
 - **IP Flow Verify**: allows your to detect traffic filtering issues at a VM level.
-- **Packet Capture**: allow syou to capture traffuc on a VM in a virtual network.
+- **Packet Capture**: allows you to capture traffic on a VM in a virtual network.
 - **Traffic Analysis**: primarily used to examine NSG flow logs in order to provide insights into traffic flow.
 
 ### Data Collection Endpoints
@@ -81,7 +81,7 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
 ### Recovery Services Vault
 
 - **Recovery Services Vault**: an entity that stores the backups and recovery points created over time *for a particular Region only*.  
-  - The data is typically copies of data, or configuration information for viertul machines (VMs), workloads, servers, or workstations.
+  - The data is typically copies of data, or configuration information for virtual machines (VMs), workloads, servers, or workstations.
   - You can use Recovery Services vaults to hold backup data for various Azure services, and they make it easy to organize your backup data while minimizing management overhead.
 > [!NOTE]
 > You can only backup data sources or VMs that are in the same region as the Recovery Services vault.  You can back up VMs that have different resource groups or OS's as long as they are in the same region as the vault.
@@ -89,4 +89,4 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
 **When performing a failover you should**:
 1. **Verify the VM settings**: check if the VM is healthy and protected.
 2. **Run a failover**: in the failover tab, you are required to choose a recovery point.
-3. **Reprotect the VM**: after failover, you re-protect the VM in the secondary region so that it replicates back to the primary region.
+3. **Re=protect the VM**: after failover, you re-protect the VM in the secondary region so that it replicates back to the primary region.
