@@ -27,6 +27,7 @@
   - [Containers](#containers)
     - [Azure Container Instances](#azure-container-instances)
     - [Azure Container Apps](#azure-container-apps)
+  - [Additional Quick Notes](#additional-quick-notes)
 
 
 ## Creating A Virtual Machine
@@ -39,11 +40,12 @@ There are four availability options you can choose from when creating your machi
 - **No infrastructure redundancy required**: self explanatory.
   - Great if it is a stand-alone VM since data is not being passed between VMs.
 - **Availability zone**: Physically separate your resources within an Azure region.
-  - Used to protect applications against Azure data center failures.
+  - Used to protect applications against Azure data center failures.  Since AZs are physically separate data centers within an Azure region, each with independent power, cooling, and networking. *This protects applications and data from datacenter-level failures.*
+  - Deploying VMs across at least three Availability Zones in a region is a fundamental requirement for the 99.99% SLA.
 - **Virtual machine scale set**: Distribute VMs across zones and fault domains at scale.
 - **Availability set**: a logical grouping of VMs within a data center that ensures they are distributed across multiple fault domains (power/network) and update domains (separate maintenance windows) to maximize uptime.
   - The purpose if to protect against hardware failures and planned maintenance outages by ensuring that all of your VMs *DO NOT* go down at the same time.
-  - 99.95% SLA when you have two or more VMs in the set.
+  - ***99.95% SLA*** *when you have two or more VMs in the set.*
   - Two failures are:
     - **Fault domains**: something relating to the computer failed.
       - Virtual machines in the same fault domain share a common power source and physical network switch.
@@ -100,6 +102,10 @@ This allows you to resume from where you left off when your VM restarts.
 - **Zone-redundant storage (data is replicated to three zones)**
   - **Premium SSD**: Best for production workloads that need storage resiliency against zone failures.
   - **Standard SSD**: Best for web servers, lightly used enterprise applications and dev/test that need storage resiliency against zone failures.
+- **Managed Disks**: are highly available by design.  For single-instance VMs using Managed Disks, Azure guaranteed 99.9% SLA.
+  - More importantly, for VMs deployed in Availability Zones, Managed Disks automatically replicate their data to multiple storage stamps within the chosen zone.
+  - Using Managed Disks with Availability Zones is key to the 99.9% SLA for VMs.
+  - Provide the capability to increase the size of an attached data disk while the virtual machine is still running.  All you will need to do is extend the partition to utilize the new space.
 
 ### Networking
 
@@ -264,3 +270,10 @@ You can turn *Session Affinity* on to ensure an end user always gets the same we
   - It automatically handles scaling, load balancing, and networking.
   - Ideal for microservices, APIs, and event-driven applications that need to scale up and down based on demand.
   - Serverless containers!
+
+## Additional Quick Notes
+
+- To guarantee an application uptime SLA of 99.99% at the infrastructure level:
+  - Deploy the virtual machine across multiple Availability Zones within the selected Azure Region
+  - Place the virtual machines behind an Azure Standard Load Balancer
+  - Implement managed disks for all virtual machines
