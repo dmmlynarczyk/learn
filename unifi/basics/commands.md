@@ -101,4 +101,4 @@ sudo apt update
 sudo apt install -y mongodb-org
 sudo apt install -y unifi
 
-*Source found [HERE](https://www.reddit.com/r/UNIFI/comments/1deaeoj/how_to_guide_installing_unifi_network_application/)
+*Source found [HERE](https://www.reddit.com/r/UNIFI/comments/1deaeoj/how_to_guide_installing_unifi_network_application/)*
