@@ -1,5 +1,22 @@
 # Commands
 
+- [Commands](#commands)
+  - [SSH](#ssh)
+  - [UniFi SSH Commands](#unifi-ssh-commands)
+  - [Network Related SSH Commands](#network-related-ssh-commands)
+  - [UniFi OS SSH Commands](#unifi-os-ssh-commands)
+  - [UniFi Log Files](#unifi-log-files)
+  - [Other Useful Commands](#other-useful-commands)
+  - [Network Devices](#network-devices)
+  - [Installing Unifi Network Application to Debian and Ubuntu](#installing-unifi-network-application-to-debian-and-ubuntu)
+    - [Update package lists, upgrade all packages, and remove unnecessary packages](#update-package-lists-upgrade-all-packages-and-remove-unnecessary-packages)
+    - [Install required packages](#install-required-packages)
+    - [Add MongoDB GPG key and repository](#add-mongodb-gpg-key-and-repository)
+    - [Add Unifi GPG key and repository](#add-unifi-gpg-key-and-repository)
+    - [Update package lists again to include the new repositories](#update-package-lists-again-to-include-the-new-repositories)
+    - [Install MongoDB and Unifi](#install-mongodb-and-unifi)
+
+
 ## SSH
 
 To find SSH information for devices:
