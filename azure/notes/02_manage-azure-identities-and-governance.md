@@ -19,6 +19,7 @@
     - [Cost Management - Analysis, Alerts, Budget, and Advisor](#cost-management---analysis-alerts-budget-and-advisor)
     - [Resource Locks](#resource-locks)
     - [Azure Policies](#azure-policies)
+      - [Non-Compliant Policies](#non-compliant-policies)
     - [Tags](#tags)
     - [Azure Advisor](#azure-advisor)
 
@@ -95,7 +96,10 @@ At a basic level, "in order for a user to interact with a resource in Azure, you
 RBAC allows you to define a number of "roles" across the organization that you can then assign those roles to individuals.  Those roles have a static number of permissions, meaning you do not have to worry about giving access to too much.  As long as the role is setup properly, the user will be given least access permissions.  
 Users *CAN* be assigned to multiple roles.  
 
-RBAC is primarily used to manage who can do that on which resources.  It **does not** provide granular control over the properties or configuration details of resources being created, such as enforcing restrictions for VM SKU size, etc.  
+RBAC is primarily used to manage who can do what on which resources.  It **does not** provide granular control over the properties or configuration details of resources being created, such as enforcing restrictions for VM SKU size, etc.  
+
+>[!NOTE]
+> RBAC is focused on authorization and access management, not financial tracking.
 
 ### Benefits of RBAC
 
@@ -105,10 +109,14 @@ RBAC is primarily used to manage who can do that on which resources.  It **does 
 
 ### Role Types
 
+To adhere to the principle of least privilege, we must select a role that provides exactly the necessary permissions without granting excessive access.  Roles can be used to fine tune access to resources, there are three built-in roles that include:
 - **Owner:** Grants full access to manage all resources, including the ability to assign roles in Azure RBAC.  
-- **Contributor:** Grants full access to manage all resources, *but does not allow you to assign roles in Azure RBAC*, manage assignments in Azure Blueprints, or *share image galleries.*  
+- **Contributor:** Grants full access to manage all resources, *but does not allow you to*: 
+  - assign roles in Azure RBAC
+  - manage assignments in Azure Blueprints
+  - share image galleries
+  - assign or manage POSIX ACLs
 - **Reader:** View all resources, but does not allow you to make any changes.  
-
 
 **You can also make custom roles!**  
 To do this you need to have an Azure Premium P1/P2 to gain access to custom roles.  But it will allow you to get super-granular into permissions to pick and choose specifics.  
@@ -158,25 +166,68 @@ If you ever want to see how your account is being billed it is easiest to go und
 
 ### Resource Locks
 
-**ReadOnly:** prevents a resource from being modified AND deleted.  You cannot make ANY changes to ANY resource the lock is applied to.
-**Delete:** prevents a resource from being deleted, but can still be modified.
+**Azure Resource Locks**: are primarily used to prevent accidental deletion or modification of existing critical resources.  There are two types of locks:
+- **ReadOnly:** prevents a resource from being modified AND deleted.  You cannot make ANY changes to ANY resource the lock is applied to.
+- **Delete:** prevents a resource from being deleted, but can still be modified.
 
 The lock will need to be removed before you can modify/delete your resource that the lock is applied to.  Can be applied to subscription, resource group, and individual resources!
 
 ### Azure Policies
 
-**Policy Definition:** is a blueprint or template that describes what should be evaluated and what action to take.  It defines the rules and logic (like "only logins from location XYZ are allowed or what version of SQL server you are allowed to deploy)
-**Policy:** is an instance of a policy definition that has been assigned to a specific scope.  This is the policy definition put into action with specific parameters and enforcement settings.
+**Policy Definition:** is a blueprint or template that describes what should be evaluated and what action to take.  It defines the rules and logic 
+
+**Policy:** is an instance of a policy definition that has been assigned to a specific scope.  This is the policy definition put into action with specific parameters and enforcement settings.  
+
 **Initiative:** is a collection of policies, so you can batch assign a group of related policies if you need.  
+
+> [!NOTE]
+> You would use policies to enforce creation rules like:
+> - only logins from location XYZ are allowed
+> - what version of SQL server you are allowed to deploy
+> - which VM SKU sizes are allowed.
+
+To create, update, delete, and query Azure Policy Definitions you can use the following:
+- Azure Portal
+- Azure PowerShell
+- Azure CLI
+- ARM templates
+- Azure Policy REST API
+
+
+**Policy effects** help to enforce compliance by blocking deployments that do not meet policy requirements, and the **Audit Effect** can log non-compliance for review.  If you apply a policy to a subscription it will apply to all deployments under that subscription.  It is important to determine the scope you need the policy assigned to.  
+
+*Example*: if you had a policy to deny the creation of virtual network interfaces, and you tried to create a VM, the VM deployment would fail because the policy will deny the creation of the required resources.  It will be denied at the validation phase before any resources can be provisioned for creation.
+
+> [!IMPORTANT]
+> While Azure Policies will prevent certain actions and block updates if they would violate a policy rule, *it will not* automatically deallocate or stop an already running instance, such as a VM.  You will have to do that manually.
+
+#### Non-Compliant Policies
+
+To bring non-compliant resources into compliance by using Azure Policy's remediation capabilities you would need to do the following:
+1. Access the "Compliance" blade under Azure Policy
+2. Create and Initiate a Remediation Task
+3. Specify remediation task details
+4. Review the remediation task details and click "Remediate" to start the process
 
 ### Tags
 
-Tags allow you to define a name/value pair that can be attached to resources.  
+Tags allow you to define a name/value pair that can be attached to resources. They are specifically designed for categorization, management, and cost allocation.
 Important to keep it consistent in your organization to ensure things are easy to find/determine. 
-You could set policies to require tags for all different types of things in Azure.  Subscriptions, resource groups, resources, etc.  
+You could set policies to require tags for all different types of things in Azure.  Subscriptions, resource groups, resources, etc. 
+
+If you consistently apply proper tags (such as a Department tag) to all resources, you can easily break down and attribute costs to individual departments, enabling effective chargeback and budget management.
 
 ### Azure Advisor
 
 **Azure Advisor**: is your go-to personalized cloud consultant, dedicated to helping you optimize your Azure deployments for maximum efficiency.  By thoroughly analyzing your resource configurations and monitoring usage data, Azure Advisor delivers tailored recommendations that enhance various aspects of your cloud environment.  
+
+Azure Advisor is specifically designed to provide personalized, actionable recommendations for your Azure resources. It helps users follow best practices and optimize their Azure deployments.  
+
+Its recommendations cover five key pillars:
+1. Cost
+2. Security
+3. Reliability
+4. Operational Excellence
+5. Performance  
 
 These suggestions focus on improving *cost-effectiveness, boosting performance, ensuring reliability,* and *fortifying security,* allowing you to maximize the value of your Azure resources while minimizing potential risks.  

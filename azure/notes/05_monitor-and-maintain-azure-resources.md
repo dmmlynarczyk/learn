@@ -7,17 +7,19 @@
     - [Insights](#insights)
     - [Data Collection Endpoints](#data-collection-endpoints)
     - [Detection, Triage, and Diagnostics](#detection-triage-and-diagnostics)
+      - [Alerts and Actions](#alerts-and-actions)
     - [Azure Advisor](#azure-advisor)
   - [Implement Backup and Recovery](#implement-backup-and-recovery)
     - [Standard vs Enhanced Backup](#standard-vs-enhanced-backup)
     - [Azure Site Recovery](#azure-site-recovery)
     - [Recovery Services Vault](#recovery-services-vault)
+  - [Service Health](#service-health)
 
 
 ## Monitor Resources In Azure
 
 In the sidebar and in the resources it is simply called **Monitor**.  
-**Azure Monitor**: is a centralized dashboard that contains all of the diagnostics, logging, and metrics for associated services.  
+**Azure Monitor**: is a centralized dashboard that contains all of the diagnostics, logging, and metrics for associated services.  It is primarily used for collecting, analyzing, and acting on telemetry data from Azure and on-premises environments.
 
 ### Insights
 
@@ -44,6 +46,16 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
 - **Alerts**: Get notified and respond using alerts and actions
 - **Logs**: Analyze and diagnose issues with log queries
 - **Health Model**: manage the health of your full-stack applications and workloads
+
+#### Alerts and Actions
+
+**Alert Rules**: define the specific condition that, when met, triggers an alert (e.g. CPU >90%, resource group deletion event, etc.)
+- It allows you to set the alert's severity.
+- Create one alert for each event you want to be notified for.
+
+**Action Groups**: defines the specific actions to be taken when an alert is triggered (send an email, call an Azure Function, trigger a webhook, etc).
+- Action groups are reusable and can be linked to multiple alert rules.
+- They also allow you to configure alert suppression, which sets a limit on how ofter alert notifications are sent.
 
 ### Azure Advisor
 
@@ -90,3 +102,10 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
 1. **Verify the VM settings**: check if the VM is healthy and protected.
 2. **Run a failover**: in the failover tab, you are required to choose a recovery point.
 3. **Re=protect the VM**: after failover, you re-protect the VM in the secondary region so that it replicates back to the primary region.
+
+## Service Health
+
+**Azure Service Health**: provides personalized alerts and guidance on Azure service issues, planned maintenance, and health advisories relevant to your subscription.  
+
+> [!IMPORTANT]
+> It focuses on the health of the Azure platform itself, not on recommendations for optimizing your deployed resources.
