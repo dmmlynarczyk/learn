@@ -9,10 +9,14 @@
     - [Detection, Triage, and Diagnostics](#detection-triage-and-diagnostics)
       - [Alerts and Actions](#alerts-and-actions)
     - [Azure Advisor](#azure-advisor)
+    - [Azure Monitor Log Queries](#azure-monitor-log-queries)
+    - [Azure Network Watcher](#azure-network-watcher)
   - [Implement Backup and Recovery](#implement-backup-and-recovery)
     - [Standard vs Enhanced Backup](#standard-vs-enhanced-backup)
     - [Azure Site Recovery](#azure-site-recovery)
     - [Recovery Services Vault](#recovery-services-vault)
+    - [Azure Backup Vault](#azure-backup-vault)
+    - [Azure Backup Center](#azure-backup-center)
   - [Service Health](#service-health)
 
 
@@ -64,6 +68,27 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
   - You can optimize and improve the efficiency of your infrastructure by identifying idle and underutilized resources.
   - Azure Cost Management works with Azure Advisor to provide cost optimization recommendations.
 
+### Azure Monitor Log Queries
+
+- **Table-based Queries**: write advanced Kusto queries
+- **Simple Mode**: visual filtering and sorting
+- **Functions**: reuse saved query logic
+- **Search Queries**: run queries at regular intervals
+
+### Azure Network Watcher
+
+- **Azure Network Watcher**: a comprehensive network monitoring and diagnostics toolset that helps you troubleshoot connectivity issues, monitor network performance, and validate security configurations in Azure.
+- Includes tools like:
+  - **Connection Monitor**: test connectivity between resources
+  - **IP Flow Verify**: check if NSG rules allow/deny traffic
+  - **Next Hop**: trace routing paths
+  - **Packet capture**: allows for deep network analysis
+  - **Topology View**: provides a visual representation of all network resources within a VNet, including VMs, subnets, and NSGs
+    - Shows the logical connections between resources, allowing you to identify intermediate hops and security group associations
+
+> [!NOTE]
+> Network Watcher toosl are for monitoring, diagnosing, and visualizing network configurations.  They **DO NOT** have the capabilities to directly modify or remediate network configurations.
+
 ## Implement Backup and Recovery
 
 - **Azure Backup**: a cloud-based backup service that protects data and applications running in Azure VMs, on-premises servers, and other Azure services like SQL databases and file shares.
@@ -95,6 +120,7 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
 - **Recovery Services Vault**: an entity that stores the backups and recovery points created over time *for a particular Region only*.  
   - The data is typically copies of data, or configuration information for virtual machines (VMs), workloads, servers, or workstations.
   - You can use Recovery Services vaults to hold backup data for various Azure services, and they make it easy to organize your backup data while minimizing management overhead.
+
 > [!NOTE]
 > You can only backup data sources or VMs that are in the same region as the Recovery Services vault.  You can back up VMs that have different resource groups or OS's as long as they are in the same region as the vault.
 
@@ -102,6 +128,17 @@ Monitor allows for the visualization, analysis, and responding to monitoring dat
 1. **Verify the VM settings**: check if the VM is healthy and protected.
 2. **Run a failover**: in the failover tab, you are required to choose a recovery point.
 3. **Re=protect the VM**: after failover, you re-protect the VM in the secondary region so that it replicates back to the primary region.
+
+### Azure Backup Vault
+
+- **Azure Backup Vault** is explicitly designed for managing the lifecycle of Azure Managed Disk snapshots in a policy-driven manner.
+  - It provides fast operational backup and recovery for managed disks directly from snapshots.
+  - *Provides low administrative overhead and low cost, as it only stored incremental changes after the first snapshot.*
+
+### Azure Backup Center
+
+- **Azure Backup Center**: provides a single, unified management experience across Azure for governing, monitoring, operating, and analyzing backups at scale.
+  - It allows you to create and manage Backup Vaults from a centralized console.
 
 ## Service Health
 
