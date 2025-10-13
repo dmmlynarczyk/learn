@@ -5,11 +5,13 @@
 - [Implement and Manage Storage](#implement-and-manage-storage)
   - [Storage Types](#storage-types)
   - [Create Storage Accounts](#create-storage-accounts)
+    - [Restricting Access](#restricting-access)
     - [Redundant Storage](#redundant-storage)
     - [Advanced Options](#advanced-options)
     - [Blob Storage Access tiers](#blob-storage-access-tiers)
     - [Networking](#networking)
     - [Data Protection](#data-protection)
+      - [Protecting Blob Data](#protecting-blob-data)
   - [Encryption](#encryption)
     - [Azure Key Vault](#azure-key-vault)
   - [Containers](#containers)
@@ -20,6 +22,7 @@
   - [Object Replication](#object-replication)
   - [Storage Browser](#storage-browser)
   - [File Shares](#file-shares)
+    - [Accessing Azure File Share](#accessing-azure-file-share)
 
 ## Storage Types
 
@@ -39,6 +42,13 @@
 
 When creating a storage account it is important to remember that the region that you choose will directly affect the amount you pay.  But you want the data to live close to you for accessing.  Region can also be chosen based on the jurisdiction of the data you are storing.  For example, health data for U.S. patients, need to be stored in the U.S.  
 
+### Restricting Access
+
+You can restrict access to an Azure Storage account based on several factors including things like only allowing a specific IP address or virtual network to access the account.  
+- To do this you will need to activate the storage account's firewall and change to "Selected Networks".
+  - Then, in the "Firewall Rules" section, you must explicitly add the allowed public IP address ranges (or individual IPs) that should have access.
+  - By default, storage accounts allow access from all networks, but by doing this all traffic not specifically listed will be implicitly denied.
+
 ### Redundant Storage
 
 > [!NOTE]
@@ -49,13 +59,15 @@ The data in your Azure storage account is always replicated (*copied three times
   - Lowest cost option.
   - Stored in one region/one data center
   - Recommended for non-critical scenarios.
+  - Data is replicated three times *within* a single data center in the primary region, providing protection against device failures.
 - **Geo-redundant storage (GRS)**: Intermediate option with failover capabilities in a secondary region.
   - Recommended for backup scenarios.
   - Takes your data out to another region.
     - So three copies in a datacenter in your region and three copies of your data in another region.
+- **Read-access geo-redundant storage (RA-GRS)**: Data is synchronously replicated in the primary region and then asynchronously replicated to a paired secondary region, with read access to the secondary copy available at all times, even before a failover.
 - **Zone-redundant storage (ZRS)**: Intermediate option with protection against datacenter-level failures.
   - Recommended for high availability scenarios.
-  - Spreads across three datacenters across one region.
+  - Data is replicated synchronously three times across two or more Azure Availability Zones within the primary region.
 - **Geo-zone-redundant storage (GZRS)**: Optimal data protection solution that includes the offerings of both GRS and ZRS.
   - Recommended for critical data scenarios.
   - Three copies of your files in three different datacenters in two different regions.
@@ -93,6 +105,15 @@ There are three ways you can connect to your storage account:
 **Soft Delete**: when you go to delete a file, it will mark is as 'marked for deletion' and not actually delete it.  You will then have a number of days, specified by you, to retrieve the file before it is actually deleted.  
 **Tracking**: Allows you to keep track of changes made to your blob data.  
 **File immutability**: means that you have a file that can never be deleted or edited, and you can be certain that it has not been changed.  
+
+#### Protecting Blob Data
+
+The process protecting blob data from accidental deletions AND overwrites with a specific recovery window is as follows:
+1. Enable Soft Delete for blobs
+2. Set the Retention Period for Soft Delete to X amount of days
+3. Enable Versioning for blob data
+
+This setup allows you to recover deleted data for up to 14 days and since versioning is also enabled, it allows you to recover overwritten data as well. This ensure comprehensive protection for "blobs, snapshots, and versions".  It will also operate transparently without affecting performance during normal operations.
 
 ## Encryption
 
@@ -182,3 +203,15 @@ Can utilize Azure Backup to protect file shares from accidental deletion or modi
 - **Premium**: Only available for premium file storage accounts.
 - **Hot**: Balanced storage and transaction pricing for workloads that have a good measure of both.
 - **Cool**: Most cost-efficient storage pricing for storage-intensive workloads.
+
+### Accessing Azure File Share
+
+You can either mount Azure file share to a drive letter of you can directly access your Azure file share using the UNC path by entering the following into File Explorer*.  Be sure to replace *storageaccountname* with your storage account name and *myfileshare* with your file share name:  
+`\\storageaccountname.file.core.windows.net\myfileshare`
+
+- Notes to remember:
+  - `storageaccountname`: is your storage account name
+  - `file.core.windows.net`: is the FQDN suffix for Azure Files service endpoints
+    - The endpoint ensures the request is routed to the Azure Files SMB service.
+  - `myfileshare`: is your file share name
+    - The UNC path must specify the share name after the hostname
