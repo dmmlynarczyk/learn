@@ -12,6 +12,7 @@
     - [Networking](#networking)
     - [Data Protection](#data-protection)
       - [Protecting Blob Data](#protecting-blob-data)
+      - [Azure Object Replication](#azure-object-replication)
   - [Encryption](#encryption)
     - [Azure Key Vault](#azure-key-vault)
   - [Containers](#containers)
@@ -29,9 +30,12 @@
 - There are four storage types in Azure and they are:
   - **Blob Storage**: object storage for unstructured data like images, videos, documents, and backups.
     - Think of it as a file storage accessible via REST API, great for websites and applications.
+    - Fully supported by the Azure Import/Export service.  You can specify block blobs or page blobs within containers to be exported to physical drives that you ship to an Azure datacenter.
+      - **Azure Import/Export**: is a specialized tool for transferring large amounts of data to and from Azure via physical drives.
   - **Files**: fully managed file shared accessible via SMB protocol that can be mounted like traditional network drives on Linux/Windows
     - Enables you to set up highly available network file shares that can be accessed anywhere in the world.
     - Perfect for lift-and-shift scenarios or shared application data.
+    - *Supports importing in Azure Import/Export but does not support exporting data from Azure Files.*
   - **Tables**: NoSQL key-value store for structured data that doesn't require complex relationships
     - Ideal for storing large amounts of structured data like user profiles or device information
   - **Queues**: message queuing service that enables asynchronous communication between application components
@@ -114,6 +118,12 @@ The process protecting blob data from accidental deletions AND overwrites with a
 3. Enable Versioning for blob data
 
 This setup allows you to recover deleted data for up to 14 days and since versioning is also enabled, it allows you to recover overwritten data as well. This ensure comprehensive protection for "blobs, snapshots, and versions".  It will also operate transparently without affecting performance during normal operations.
+
+#### Azure Object Replication
+
+Azure Object Replication rules support blob filter rules, which can include minimum blob size thresholds (e.g. "only replicate blobs > X size").
+
+Object replication also preserves blob metadata, tags, and properties, which is important for data governance, search/filters, etc.
 
 ## Encryption
 
