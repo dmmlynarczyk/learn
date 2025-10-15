@@ -106,6 +106,14 @@ This allows you to resume from where you left off when your VM restarts.
   - More importantly, for VMs deployed in Availability Zones, Managed Disks automatically replicate their data to multiple storage stamps within the chosen zone.
   - Using Managed Disks with Availability Zones is key to the 99.9% SLA for VMs.
   - Provide the capability to increase the size of an attached data disk while the virtual machine is still running.  All you will need to do is extend the partition to utilize the new space.
+  - **Managed Disks are billed based on their provisioned size and SKU, regardless of whether they are attached to a running VM or not.**
+    - The only way to stop incurring costs for an unused managed disk is to delete it.
+  
+**Steps for provisioning a new data disk with Server-Side Encryption using a customer-managed key (CMK)**:
+1. Create an Azure Disk Encryption Set (DES), linking it to the Key Vault and the specific key.
+2. Define the managed disk configuration, referencing the Disk Encryption Set.
+3. Provision the managed disk using the defined configuration.
+4. Attach the newly created disk to the VM.
 
 ### Networking
 
@@ -134,6 +142,8 @@ Similar to OS disk you have the option of deleting the public IP and NIC when th
   - Provides automated scheduling with point-in-time recovery to meet your RPO/RTO requirements.
   - Essential for ensuring computer workloads have proper data protections and can be quickly restored after failures or disasters. 
   - Azure Backup only takes snapshots of the VM disks, meaning that **even if the VM status is running or stopped, you can still create a backup** as long as the disk is attached to the VM.
+- If you receive an error of "VM is not in a state to allow backups" when using the Replace Existing option in the Recovery Services vault, you will e need to stop (deallocate) the virtual machine.
+  - Azure Backup supports VMs only in the Running, Stopped, or Stopped (deallocated) state.
 
 ## Resizing VMs
 
@@ -257,7 +267,7 @@ You can turn *Session Affinity* on to ensure an end user always gets the same we
 - Azure Container Instances and Azure Container Apps are services that run these containers without you needing to manage the underlying servers.
 - Kubernetes is the industry standard for containers, but not a requirement in AZ104.
 - **Azure Container Groups**: a collection of containers running in the same host.
-- **Azure Container Registry**: a private container that lives in Azure that you can store your private container images.
+- **Azure Container Registry**: a managed and private Docker registry that lives in Azure that you can store your private container images.
 
 ### Azure Container Instances
 
